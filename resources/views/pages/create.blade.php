@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
-    <form>
+    <form action="{{route('store')}}">
         <label>標題</label>
         <input name="title">
         <label>內容</label>
-        <input name="title">
+        <input name="content">
         <label>備註</label>
-        <input name="title">
+        <input name="remake">
         <button type="submit">submit</button>
     </form>
 @endsection
