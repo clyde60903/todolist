@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <table class="title">
+    <table class="table">
         <thead>
         <tr>
             <td>標題</td>
@@ -15,6 +15,10 @@
                 <td>{{$row->title}}</td>
                 <td>{{$row->content}}</td>
                 <td>{{$row->remake}}</td>
+                <td>
+                    <button class="btn btn-success">新增</button>
+                    <button class="btn btn-danger">刪除</button>
+                </td>
             </tr>
         @endforeach
         </tbody>
