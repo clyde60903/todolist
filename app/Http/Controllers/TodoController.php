@@ -20,6 +20,10 @@ class TodoController extends Controller
     }
     public function store(Request $request)
     {
-        dd($request);
+        $title = $request->title;
+        $content = $request->content;
+        $remake = $request->remake;
+        DB::table('todos')->insert(['title'=>$title,'content'=>$content,'remake'=>$remake]);
+        return view('pages.create');
     }
 }
