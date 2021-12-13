@@ -17,7 +17,7 @@ class CreateTodosTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->string('remake')->nullable();
+            $table->string('remark')->nullable();
             $table->timestamps();
         });
     }
