@@ -26,4 +26,12 @@ class TodoController extends Controller
         DB::table('todos')->insert(['title'=>$title,'content'=>$content,'remake'=>$remake]);
         return view('pages.create');
     }
+    public function delete(Request $request)
+    {
+        $id = $request->delete_id;
+        DB::table('todos')
+            ->where('id',$id)
+            ->delete();
+        return redirect()->route('index');
+    }
 }
