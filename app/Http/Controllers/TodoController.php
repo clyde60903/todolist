@@ -22,16 +22,37 @@ class TodoController extends Controller
     {
         $title = $request->title;
         $content = $request->content;
-        $remake = $request->remake;
-        DB::table('todos')->insert(['title'=>$title,'content'=>$content,'remake'=>$remake]);
+        $remark = $request->remark;
+        DB::table('todos')->insert(['title'=>$title,'content'=>$content,'remark'=>$remark]);
         return view('pages.create');
     }
     public function delete(Request $request)
     {
-        $id = $request->delete_id;
+        $id = $request->get('id');
         DB::table('todos')
             ->where('id',$id)
             ->delete();
+        return redirect()->route('index');
+    }
+    public function edit(Request $request)
+    {
+        $id = $request->get('id');
+        $data = DB::table('todos')
+            ->where('id',$id)
+            ->first();
+        return view('pages.edit',compact('data',$data));
+    }
+    public function store_edit(Request $request)
+    {
+        dd($request);
+        $id=$request->get('id');
+        $title = $request->get('title');
+        $content = $request->get('content');
+        $remark = $request->get('remark');
+        DB::table('todos')->where('id',$id)
+            ->update([
+                'title'=>$title,'content'=>$content,'remark'=>$remark,
+            ]);
         return redirect()->route('index');
     }
 }
